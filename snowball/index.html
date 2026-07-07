@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Snowball Budget — give every dollar a job, find your debt-free date</title>
+  <meta name="description" content="Snowball Budget is an iOS budgeting app: plan your month, log expenses, grow a savings jar, and snowball your debt to a real debt-free date. Everything stays on your device.">
+  <meta property="og:title" content="Snowball Budget">
+  <meta property="og:description" content="Give every dollar a job, grow your savings, and find your debt-free date. All on your device — no accounts, no servers, no tracking.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>❄️</text></svg>">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* Snowball Budget accent: cool blues over the shared stylesheet */
+    :root {
+      --green: #3a63d0;
+      --green-dark: #2a4aa4;
+      --gold: #7fc3ee;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --green: #7d9bee;
+        --green-dark: #5f80e0;
+      }
+    }
+    /* No screenshots yet — let the hero copy use the full width */
+    .hero .wrap { grid-template-columns: 1fr; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">❄️ Snowball Budget</a>
+    <a class="link" href="#features">Features</a>
+    <a class="link keep" href="#feedback">Feedback</a>
+    <a class="link keep" href="../index.html">🌿 Planthology</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1><span class="leaf">❄️</span> Give every dollar a job.<br>Find your debt-free date.</h1>
+      <p class="tag">
+        Snowball Budget is a calm monthly money planner: income minus fixed
+        costs, loan payments, and savings leaves what's yours to spend. Log
+        expenses in a couple of taps, watch your savings jar fill, and aim
+        every extra dollar at your debt — snowball or avalanche.
+      </p>
+      <div class="badge-row">
+        <!-- Replace href with the App Store link once the app is live -->
+        <a class="btn primary" href="#feedback">Coming soon to the App&nbsp;Store</a>
+        <a class="btn ghost" href="#features">See what it does</a>
+      </div>
+      <p class="note">iOS · iPhone · no accounts, no servers — your money data never leaves your device</p>
+    </div>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Budgeting without the spreadsheet</h2>
+    <p class="lede">Five tabs, one loop: plan the month, log what you spend, and watch one number — Left to Spend.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🧮</div>
+        <h3>Plan your month</h3>
+        <p>Start in the Planner: income minus fixed costs, loan payments, and your savings goal leaves what's yours to allocate. Split that across category budgets and the month is set.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧾</div>
+        <h3>Log expenses in two taps</h3>
+        <p>Add an expense, give it a category, done. The more you log, the smarter every chart gets — spending by category, recent activity, and how the month is tracking.</p>
+      </div>
+      <div class="card">
+        <div class="icon">❄️</div>
+        <h3>Snowball your debt</h3>
+        <p>Enter your loans, pick <strong>snowball</strong> (smallest balance first — quick wins) or <strong>avalanche</strong> (highest rate first — least interest), and commit an extra monthly amount. The payoff plan shows your debt-free date.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏦</div>
+        <h3>Watch your jar fill</h3>
+        <p>Set a monthly savings goal and log contributions as you go. Your jar fills up right on the Dashboard — a small win you can see every day.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📊</div>
+        <h3>One number to watch</h3>
+        <p>The Dashboard shows <strong>Left to Spend</strong> — your monthly budget minus everything you've logged. When it's green, you're fine. That's the whole day-to-day.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📅</div>
+        <h3>The annual picture</h3>
+        <p>When you're curious about the big picture, the Annual tab has your whole year — income, spending, and savings, month by month.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="feedback">
+  <div class="wrap">
+    <h2>Feedback &amp; support</h2>
+    <p class="lede">Found a bug? Want a feature? I read everything.</p>
+    <div class="feedback-cards">
+      <div class="card">
+        <div class="icon">🐞</div>
+        <h3>Report a bug</h3>
+        <p>Something broken or behaving oddly in Snowball Budget? File it on GitHub — screenshots help a ton.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?template=snowball_bug_report.md&labels=bug,snowball-budget&title=%5BSnowball%5D%5BBug%5D%20">Open a bug report</a></p>
+      </div>
+      <div class="card">
+        <div class="icon">💡</div>
+        <h3>Request a feature</h3>
+        <p>Tell me what would make Snowball Budget fit your money life better.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?template=snowball_feature_request.md&labels=enhancement,snowball-budget&title=%5BSnowball%5D%5BIdea%5D%20">Suggest a feature</a></p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>Something else</h3>
+        <p>Question, not sure it's a bug, or anything else on your mind — open a general issue and mention Snowball Budget.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?labels=snowball-budget&title=%5BSnowball%5D%20">Start a discussion</a></p>
+      </div>
+    </div>
+    <p class="note">Support page: <a href="support.html">Snowball Budget support &amp; FAQ</a> · Privacy: <a href="privacy.html">privacy policy</a></p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mitchell Isler</span>
+    <a href="privacy.html">Privacy</a>
+    <a href="support.html">Support</a>
+    <a href="../index.html">More apps</a>
+    <span class="spacer"></span>
+    <span>Made with ❄️</span>
+  </div>
+</footer>
+
+</body>
+</html>

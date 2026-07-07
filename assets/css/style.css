@@ -75,6 +75,7 @@ nav a.link {
   color: var(--ink-soft);
   text-decoration: none;
   font-size: 0.95rem;
+  white-space: nowrap;
 }
 
 nav a.link:hover { color: var(--green); }
@@ -184,6 +185,53 @@ p.lede {
 .card h3 { margin: 10px 0 6px; font-size: 1.05rem; }
 
 .card p { margin: 0; color: var(--ink-soft); font-size: 0.95rem; }
+
+/* Vs. a calendar */
+
+.vs-list {
+  display: grid;
+  gap: 14px;
+  max-width: 860px;
+}
+
+.vs-row {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px 22px;
+}
+
+.vs-row p { margin: 0; font-size: 0.95rem; }
+
+.vs-row .them { color: var(--ink-soft); margin-bottom: 8px; }
+
+.vs-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 1px 9px;
+  border-radius: 999px;
+  margin-right: 8px;
+  background: color-mix(in srgb, var(--ink-soft) 14%, transparent);
+  color: var(--ink-soft);
+  vertical-align: middle;
+}
+
+.vs-tag.us {
+  background: color-mix(in srgb, var(--green) 14%, transparent);
+  color: var(--green);
+}
+
+.vs-pitch {
+  margin: 32px 0 0;
+  font-size: 1.15rem;
+  font-weight: 600;
+  max-width: 34em;
+  border-left: 4px solid var(--green);
+  padding-left: 16px;
+}
 
 /* Screenshots */
 

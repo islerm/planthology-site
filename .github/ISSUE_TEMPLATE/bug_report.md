@@ -1,5 +1,5 @@
 ---
-name: Bug report
+name: "Planthology: bug report"
 about: Something in Planthology is broken or behaving oddly
 title: "[Bug] "
 labels: bug

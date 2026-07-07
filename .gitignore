@@ -1,0 +1,21 @@
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+
+# Claude Code (local development tool)
+.claude/
+
+# Editor settings
+.vscode/
+.idea/
+
+# Dependencies (if added later)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Environment variables
+.env
+.env.local
