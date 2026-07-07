@@ -1,5 +1,5 @@
 ---
-name: Feature request
+name: "Planthology: feature request"
 about: An idea that would make Planthology better
 title: "[Idea] "
 labels: enhancement
