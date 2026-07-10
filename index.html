@@ -15,7 +15,13 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">🌿 Planthology</a>
+    <div class="brand-dropdown">
+      <button class="brand" onclick="this.parentElement.classList.toggle('open')">🌿 Planthology</button>
+      <div class="dropdown-menu">
+        <a href="#projects">🌿 Planthology</a>
+        <a href="snowball/index.html">❄️ Snowball Budget</a>
+      </div>
+    </div>
     <a class="link" href="#features">Features</a>
     <a class="link" href="#vs">Vs. Calendar</a>
     <a class="link" href="#screenshots">Screenshots</a>
@@ -31,13 +37,12 @@
       <h1><span class="leaf">🌿</span> Plan your days.<br>Plan your trips.<br>Know when to leave.</h1>
       <p class="tag">
         A calendar tells you when things are. Planthology tells you whether
-        your day actually works — a leave-by time for every leg of it, warnings
+        your day actually works; a leave-by time for every leg of it, warnings
         when plans don't physically fit, and your workweek and your trips in
         one agenda.
       </p>
       <div class="badge-row">
-        <!-- Replace href with the App Store link once the app is live -->
-        <a class="btn primary" href="#feedback">Coming soon to the App&nbsp;Store</a>
+        <a class="btn primary" href="https://apps.apple.com/us/app/planthology/id6779658543">Get on the App&nbsp;Store</a>
         <a class="btn ghost" href="#features">See what it does</a>
       </div>
       <p class="note">iOS 26.4+ · iPhone · free of ads and tracking</p>
@@ -49,32 +54,32 @@
 <section id="features">
   <div class="wrap">
     <h2>Everything in one agenda</h2>
-    <p class="lede">Most planners store your plans. Planthology pressure-tests them — against the map, the clock, and each other.</p>
+    <p class="lede">Most planners store your plans. Planthology pressure-tests them; against the map, the clock, and each other.</p>
     <div class="grid">
       <div class="card">
         <div class="icon">🕒</div>
         <h3>Leave-by for the whole day</h3>
-        <p>Not one alert for one event — your day as a chain. The first leg starts from home base (or tonight's lodging on a trip), each leg starts where the last one ended, and long gaps route you home in between. "Leave by 11:23 AM · 3h 37m drive" sits between every pair of plans, in advance. A notification tells you when to go, with an optional countdown in the Dynamic Island.</p>
+        <p>Not one alert for one event; your day as a chain. The first leg starts from home base (or tonight's lodging on a trip), each leg starts where the last one ended, and long gaps route you home in between. "Leave by 11:23 AM · 3h 37m drive" sits between every pair of plans, in advance. A notification tells you when to go, with an optional countdown in the Dynamic Island.</p>
       </div>
       <div class="card">
         <div class="icon">🚦</div>
         <h3>Days that actually fit</h3>
-        <p>A calendar will happily book dinner across town ten minutes after a hike ends. Planthology knows the drive times, estimates a hike's duration from its mileage and elevation, and flags tight days in orange and impossible ones in red — before you live them.</p>
+        <p>A calendar will happily book dinner across town ten minutes after a hike ends. Planthology knows the drive times, estimates a hike's duration from its mileage and elevation, and flags tight days in orange and impossible ones in red; before you live them.</p>
       </div>
       <div class="card">
         <div class="icon">✅</div>
         <h3>Plans with a pulse</h3>
-        <p>A plan is an event, a task, and a place in one. Your day shows what's done, what's up next and in how long, and plans complete themselves when you arrive. Recurring events, overlap warnings, a live progress bar through today — and reminders for things without an address.</p>
+        <p>A plan is an event, a task, and a place in one. Your day shows what's done, what's up next and in how long, and plans complete themselves when you arrive. Recurring events, overlap warnings, a live progress bar through today; and reminders for things without an address.</p>
       </div>
       <div class="card">
         <div class="icon">🗺️</div>
         <h3>Trips, day by day</h3>
-        <p>Build itineraries with lodging, flights, hikes, and food. Every day gets a map and drive legs between stops — starting from wherever you're sleeping that night. Import GPX routes or search National Park Service trails to fill in hike stats automatically.</p>
+        <p>Build itineraries with lodging, flights, hikes, and food. Every day gets a map and drive legs between stops; starting from wherever you're sleeping that night. Import GPX routes or search National Park Service trails to fill in hike stats automatically.</p>
       </div>
       <div class="card">
         <div class="icon">🔐</div>
         <h3>Private sharing</h3>
-        <p>Share a trip view-only or collaborative. It's end-to-end encrypted, with the key riding only in the invite — the server stores ciphertext it can't read. And a shared trip carries lodging, routes, photos, and done-state, not just time blocks.</p>
+        <p>Share a trip view-only or collaborative. It's end-to-end encrypted, with the key riding only in the invite; the server stores ciphertext it can't read. And a shared trip carries lodging, routes, photos, and done-state, not just time blocks.</p>
       </div>
       <div class="card">
         <div class="icon">✨</div>
@@ -91,7 +96,7 @@
     <p class="lede">Feature by feature, it can sound like it. Side by side, it doesn't. Theirs is an alert; ours is an itinerary.</p>
     <div class="vs-list">
       <div class="vs-row">
-        <p class="them"><span class="vs-tag">A calendar</span> Fires one time-to-leave alert per event, on the day, from wherever your phone happens to be — and only if you typed in an address.</p>
+        <p class="them"><span class="vs-tag">A calendar</span> Fires one time-to-leave alert per event, on the day, from wherever your phone happens to be; and only if you typed in an address.</p>
         <p class="us"><span class="vs-tag us">Planthology</span> Prints a leave-by time, drive time, and distance between every pair of plans for the entire day — in advance.</p>
       </div>
       <div class="vs-row">
@@ -100,7 +105,7 @@
       </div>
       <div class="vs-row">
         <p class="them"><span class="vs-tag">A calendar</span> Splits your day across two apps that don't talk: events you can't check off, reminders that know nothing about travel.</p>
-        <p class="us"><span class="vs-tag us">Planthology</span> One object per plan — event, task, and place — with "up next", auto-complete when you arrive, and a leave-by countdown in the Dynamic Island.</p>
+        <p class="us"><span class="vs-tag us">Planthology</span> One object per plan: event, task, and place; with "up next", auto-complete when you arrive, and a leave-by countdown in the Dynamic Island.</p>
       </div>
       <div class="vs-row">
         <p class="them"><span class="vs-tag">A calendar</span> Shares time blocks, and has no idea where you're sleeping.</p>
@@ -111,7 +116,7 @@
         <p class="us"><span class="vs-tag us">Planthology</span> Turns it into a Month in Review — plans done, miles on foot, a map of where you went, your photos.</p>
       </div>
     </div>
-    <p class="vs-pitch">A calendar tells you when things are. Planthology tells you whether your day actually works — and when to leave for every piece of it.</p>
+    <p class="vs-pitch">A calendar tells you when things are. Planthology tells you whether your day actually works; and when to leave for every piece of it.</p>
   </div>
 </section>
 
@@ -122,15 +127,15 @@
     <div class="shots">
       <figure>
         <img src="assets/img/daily.png" alt="Daily agenda with week strip, live progress bar, and a trip banner">
-        <figcaption>The Daily agenda — today's progress, this week's plans.</figcaption>
+        <figcaption>The Daily agenda: today's progress, this week's plans.</figcaption>
       </figure>
       <figure>
         <img src="assets/img/monthreview.png" alt="Month in Review with category breakdown and a map of visited places">
-        <figcaption>Month in Review — where the month went, on a map.</figcaption>
+        <figcaption>Month in Review: where the month went, on a map.</figcaption>
       </figure>
       <figure>
         <img src="assets/img/monthcard.png" alt="Shareable month recap card with stats, map pins, and photos">
-        <figcaption>The share card — post your month anywhere.</figcaption>
+        <figcaption>The share card: post your month anywhere.</figcaption>
       </figure>
       <figure>
         <img src="assets/img/tutorial.png" alt="Welcome tour introducing the app's features">
@@ -148,7 +153,7 @@
       <div class="card">
         <div class="icon">🐞</div>
         <h3>Report a bug</h3>
-        <p>Something broken or behaving oddly? File it on GitHub — screenshots help a ton.</p>
+        <p>Something broken or behaving oddly? File it on GitHub; screenshots help a ton.</p>
         <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?template=bug_report.md&labels=bug&title=%5BBug%5D%20">Open a bug report</a></p>
       </div>
       <div class="card">
@@ -160,7 +165,7 @@
       <div class="card">
         <div class="icon">💬</div>
         <h3>Something else</h3>
-        <p>Question, not sure it's a bug, or anything else on your mind — open a general issue.</p>
+        <p>Question, not sure it's a bug, or anything else on your mind; open a general issue.</p>
         <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new">Start a discussion</a></p>
       </div>
     </div>
@@ -188,7 +193,7 @@
           <div class="emoji">❄️</div>
           <div>
             <h3 style="margin-top:0">Snowball Budget <span class="pill soon">New</span></h3>
-            <p>A calm monthly money planner: budget in the style that fits you — zero-based, 50/30/20, kakeibo, or envelopes — log expenses in two taps, grow a savings jar, and snowball your debt to a real debt-free date. No accounts, no servers — everything stays on your device.</p>
+            <p>A calm monthly money planner: budget in the style that fits you; zero-based, 50/30/20, kakeibo, or envelopes; log expenses in two taps, grow a savings jar, and snowball your debt to a real debt-free date. No accounts, no servers; everything stays on your device.</p>
             <p style="margin-top:10px"><a href="snowball/index.html">Learn more →</a></p>
           </div>
         </div>
@@ -241,7 +246,6 @@
     <a href="privacy.html">Privacy</a>
     <a href="support.html">Support</a>
     <span class="spacer"></span>
-    <span>Made with 🌿</span>
   </div>
 </footer>
 
