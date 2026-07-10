@@ -12,4 +12,4 @@ Describe the feature.
 The situation where you wished the app did this.
 
 **Anything else?**
-Sketches, examples from other apps, edge cases — all welcome.
+Sketches, examples from other apps, edge cases; all welcome.

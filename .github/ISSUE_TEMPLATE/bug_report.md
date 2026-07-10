@@ -16,7 +16,7 @@ A clear description of the bug.
 3.
 
 **Screenshots**
-If you can, attach a screenshot — it helps a lot.
+If you can, attach a screenshot; it helps a lot.
 
 **Device**
 - iPhone model:

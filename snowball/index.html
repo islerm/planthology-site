@@ -29,11 +29,16 @@
 
 <nav>
   <div class="wrap">
-    <a class="brand" href="#top">❄️ Snowball Budget</a>
+    <div class="brand-dropdown">
+      <button class="brand" onclick="this.parentElement.classList.toggle('open')">❄️ Snowball Budget</button>
+      <div class="dropdown-menu">
+        <a href="../index.html">🌿 Planthology</a>
+        <a href="#projects">❄️ Snowball Budget</a>
+      </div>
+    </div>
     <a class="link" href="#features">Features</a>
     <a class="link" href="#screenshots">Screenshots</a>
     <a class="link keep" href="#feedback">Feedback</a>
-    <a class="link keep" href="../index.html">🌿 Planthology</a>
   </div>
 </nav>
 
@@ -45,7 +50,7 @@
         Snowball Budget is a calm monthly money planner: income minus fixed
         costs, loan payments, and savings leaves what's yours to spend. Log
         expenses in a couple of taps, watch your savings jar fill, and aim
-        every extra dollar at your debt — snowball or avalanche.
+        every extra dollar at your debt; snowball or avalanche.
       </p>
       <div class="badge-row">
         <!-- Replace href with the App Store link once the app is live -->
@@ -61,7 +66,7 @@
 <section id="features">
   <div class="wrap">
     <h2>Budgeting without the spreadsheet</h2>
-    <p class="lede">Five tabs, one loop: plan the month, log what you spend, and watch one number — Left to Spend.</p>
+    <p class="lede">Five tabs, one loop: plan the month, log what you spend, and watch one number; Left to Spend.</p>
     <div class="grid">
       <div class="card">
         <div class="icon">🧮</div>
@@ -71,32 +76,32 @@
       <div class="card">
         <div class="icon">🧭</div>
         <h3>Budget your way</h3>
-        <p>Pick the style the app coaches you toward: <strong>zero-based</strong> (every dollar has a job), <strong>50/30/20</strong> (needs / wants / saving), <strong>kakeibo</strong> (save first, reflect monthly), <strong>strict envelopes</strong> (unspent money rolls over), or flexible tracking with no rules. Switching is always safe — only the guidance changes, never your data.</p>
+        <p>Pick the style the app coaches you toward: <strong>zero-based</strong> (every dollar has a job), <strong>50/30/20</strong> (needs / wants / saving), <strong>kakeibo</strong> (save first, reflect monthly), <strong>strict envelopes</strong> (unspent money rolls over), or flexible tracking with no rules. Switching is always safe; only the guidance changes, never your data.</p>
       </div>
       <div class="card">
         <div class="icon">🧾</div>
         <h3>Log expenses in two taps</h3>
-        <p>Add an expense, give it a category, done. The more you log, the smarter every chart gets — spending by category, recent activity, and how the month is tracking.</p>
+        <p>Add an expense, give it a category, done. The more you log, the smarter every chart gets; spending by category, recent activity, and how the month is tracking.</p>
       </div>
       <div class="card">
         <div class="icon">❄️</div>
         <h3>Snowball your debt</h3>
-        <p>Enter your loans, pick <strong>snowball</strong> (smallest balance first — quick wins) or <strong>avalanche</strong> (highest rate first — least interest), and commit an extra monthly amount. The payoff plan compares both strategies side by side, shows the interest each saves, which loan your extra dollars target right now, and the month you'll be debt-free.</p>
+        <p>Enter your loans, pick <strong>snowball</strong> (smallest balance first; quick wins) or <strong>avalanche</strong> (highest rate first; least interest), and commit an extra monthly amount. The payoff plan compares both strategies side by side, shows the interest each saves, which loan your extra dollars target right now, and the month you'll be debt-free.</p>
       </div>
       <div class="card">
         <div class="icon">🏦</div>
         <h3>Watch your jar fill</h3>
-        <p>Set a monthly savings goal and log contributions as you go. Your jar fills up right on the Dashboard — a small win you can see every day.</p>
+        <p>Set a monthly savings goal and log contributions as you go. Your jar fills up right on the Dashboard; a small win you can see every day.</p>
       </div>
       <div class="card">
         <div class="icon">📊</div>
         <h3>One number to watch</h3>
-        <p>The Dashboard shows <strong>Left to Spend</strong> — your spending budget minus what you've logged. Fixed costs don't count against it; your plan already set them aside. When it's green, you're fine. That's the whole day-to-day.</p>
+        <p>The Dashboard shows <strong>Left to Spend</strong>; your spending budget minus what you've logged. Fixed costs don't count against it; your plan already set them aside. When it's green, you're fine. That's the whole day-to-day.</p>
       </div>
       <div class="card">
         <div class="icon">📅</div>
         <h3>The annual picture</h3>
-        <p>When you're curious about the big picture, the Annual tab has your whole year — income, spending, and savings, month by month.</p>
+        <p>When you're curious about the big picture, the Annual tab has your whole year; income, spending, and savings, month by month.</p>
       </div>
     </div>
   </div>
@@ -109,15 +114,15 @@
     <div class="shots">
       <figure>
         <img src="../assets/img/snowball-planner.png" alt="Planner showing income minus fixed costs, loan payments, and savings goal leaving what's left for spending">
-        <figcaption>The Planner — what's left is yours to budget.</figcaption>
+        <figcaption>The Planner: what's left is yours to budget.</figcaption>
       </figure>
       <figure>
         <img src="../assets/img/snowball-strategies.png" alt="Budget Strategy picker listing budgeting styles with pros and cons">
-        <figcaption>Five budgeting styles — switch anytime, data stays put.</figcaption>
+        <figcaption>Five budgeting styles: switch anytime, data stays put.</figcaption>
       </figure>
       <figure>
         <img src="../assets/img/snowball-loans.png" alt="Loans screen with remaining debt, payoff progress, and a debt-free date">
-        <figcaption>Loans — progress, interest saved, debt-free date.</figcaption>
+        <figcaption>Loans: progress, interest saved, debt-free date.</figcaption>
       </figure>
       <figure>
         <img src="../assets/img/snowball-payoff.png" alt="Payoff Plan comparing snowball and avalanche strategies with the payoff order">
@@ -135,7 +140,7 @@
       <div class="card">
         <div class="icon">🐞</div>
         <h3>Report a bug</h3>
-        <p>Something broken or behaving oddly in Snowball Budget? File it on GitHub — screenshots help a ton.</p>
+        <p>Something broken or behaving oddly in Snowball Budget? File it on GitHub; screenshots help a ton.</p>
         <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?template=snowball_bug_report.md&labels=bug,snowball-budget&title=%5BSnowball%5D%5BBug%5D%20">Open a bug report</a></p>
       </div>
       <div class="card">
@@ -147,11 +152,40 @@
       <div class="card">
         <div class="icon">💬</div>
         <h3>Something else</h3>
-        <p>Question, not sure it's a bug, or anything else on your mind — open a general issue and mention Snowball Budget.</p>
+        <p>Question, not sure it's a bug, or anything else on your mind; open a general issue and mention Snowball Budget.</p>
         <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?labels=snowball-budget&title=%5BSnowball%5D%20">Start a discussion</a></p>
       </div>
     </div>
     <p class="note">Support page: <a href="support.html">Snowball Budget support &amp; FAQ</a> · Privacy: <a href="privacy.html">privacy policy</a></p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lede">What I'm building. More on the way.</p>
+    <div class="grid">
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">🌿</div>
+          <div>
+            <h3 style="margin-top:0">Planthology</h3>
+            <p>An iOS planner that unifies everyday scheduling and trip planning, with drive-time intelligence, encrypted trip sharing, and shareable month recaps.</p>
+            <p style="margin-top:10px"><a href="../index.html">Learn more →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">❄️</div>
+          <div>
+            <h3 style="margin-top:0">Snowball Budget <span class="pill">This app</span></h3>
+            <p>A calm monthly money planner: budget in the style that fits you; zero-based, 50/30/20, kakeibo, or envelopes; log expenses in two taps, grow a savings jar, and snowball your debt to a real debt-free date. No accounts, no servers; everything stays on your device.</p>
+            <p style="margin-top:10px"><a href="#top">Learn more ↑</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -162,7 +196,6 @@
     <a href="support.html">Support</a>
     <a href="../index.html">More apps</a>
     <span class="spacer"></span>
-    <span>Made with ❄️</span>
   </div>
 </footer>
 
