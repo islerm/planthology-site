@@ -188,6 +188,15 @@ header.hero {
   max-width: 34em;
 }
 
+.hero p.disclaimer {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  margin: -16px 0 28px;
+  max-width: 40em;
+}
+
+.hero p.disclaimer a { color: inherit; }
+
 .badge-row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; }
 
 .btn {
