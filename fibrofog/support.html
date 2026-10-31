@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Support: FibroFog</title>
+  <meta name="description" content="FibroFog support: FAQ, disclaimer, bug reports, feature requests, and contact.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌫️</text></svg>">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    :root { --green: #5b3fb0; --green-dark: #3a1f86; --gold: #f6c453; }
+    @media (prefers-color-scheme: dark) { :root { --green: #b9a6f5; --green-dark: #9d86ec; } }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="index.html">🌫️ FibroFog</a>
+    <a class="link keep" href="index.html#feedback">Feedback</a>
+    <a class="link keep" href="privacy.html">Privacy</a>
+  </div>
+</nav>
+
+<main class="doc">
+  <h1>Support</h1>
+  <p>
+    The fastest ways to get help or make FibroFog better. Please don't post
+    personal health details in a public issue; describe the problem, not your
+    symptoms.
+  </p>
+  <ul>
+    <li>🐞 <a href="https://github.com/islerm/planthology-site/issues/new?template=fibrofog_bug_report.md&labels=bug,fibrofog&title=%5BFibroFog%5D%5BBug%5D%20">Report a bug</a></li>
+    <li>💡 <a href="https://github.com/islerm/planthology-site/issues/new?template=fibrofog_feature_request.md&labels=enhancement,fibrofog&title=%5BFibroFog%5D%5BIdea%5D%20">Request a feature</a></li>
+    <li>💬 <a href="https://github.com/islerm/planthology-site/issues/new?labels=fibrofog&title=%5BFibroFog%5D%20">Ask a question</a></li>
+  </ul>
+
+  <h2 style="color: var(--green-dark); margin-top: 32px;">⚠️ Important Disclaimer</h2>
+  <p>
+    FibroFog is a personal symptom tracker. <strong>It is not a medical device
+    and does not diagnose, treat, or prevent any condition.</strong> The
+    Widespread Pain Index and Symptom Severity Score follow the published ACR
+    2016 criteria but are self-reported tracking data, not a diagnosis. Flare
+    outlooks, baselines, and patterns are statistical associations from your own
+    entries; they are not proof of cause and may be wrong. Weather and health
+    data come from third parties and your device and can be incomplete or
+    inaccurate. Always talk to a qualified clinician before starting, stopping,
+    or changing any medication or treatment. In an emergency, contact your local
+    emergency services.
+  </p>
+
+  <h2>FAQ</h2>
+
+  <h2 style="font-size:1.05rem">What are WPI and SSS?</h2>
+  <p>
+    The Widespread Pain Index (0 to 19) counts the body regions where you've had
+    pain; the Symptom Severity Score (0 to 12) rates fatigue, unrefreshing
+    sleep, cognitive symptoms, and a few others. They come from the American
+    College of Rheumatology's 2016 fibromyalgia criteria. FibroFog computes
+    them from your log so you and your clinician can see how they move over
+    time.
+  </p>
+
+  <h2 style="font-size:1.05rem">What is Low Energy Mode?</h2>
+  <p>
+    A stripped-down home screen with three huge buttons (Rough, Meh, Okay) plus
+    Talk and Meds taken. One tap logs the day. Switch it on from the Today
+    screen whenever a full log is too much.
+  </p>
+
+  <h2 style="font-size:1.05rem">How does voice logging work?</h2>
+  <p>
+    Tap Talk and describe your day. Your phone's built-in speech recognition
+    turns it into text, then FibroFog's parser, which runs on your device,
+    pulls out pain level, symptoms, and body areas. It only fills in what you
+    actually said, and you review everything before saving.
+  </p>
+
+  <h2 style="font-size:1.05rem">How does it know the weather?</h2>
+  <p>
+    While you're using the app, FibroFog gets your approximate location, rounds
+    it to about 10 km, and asks <a href="https://open-meteo.com">Open-Meteo</a>
+    for pressure, humidity, and temperature. It never tracks your location in
+    the background.
+  </p>
+
+  <h2 style="font-size:1.05rem">Why does a pattern say "associations, not proof"?</h2>
+  <p>
+    FibroFog looks for things that tend to move together in your data,
+    including effects up to three days later. That's useful for spotting
+    possible triggers to discuss with your clinician, but two things moving
+    together doesn't mean one causes the other.
+  </p>
+
+  <h2 style="font-size:1.05rem">How do I share the report with my doctor?</h2>
+  <p>
+    Open the Report tab, pick 30 days, 90 days, or 6 months, and tap Create
+    report. From the preview you can print it or share the PDF by email,
+    Messages, AirDrop, or a patient portal upload.
+  </p>
+
+  <h2 style="font-size:1.05rem">Where is my data stored? Does it sync?</h2>
+  <p>
+    On your device, with a backup in your own private iCloud. If you use
+    FibroFog on more than one iPhone or iPad signed in to the same iCloud
+    account, they sync. There is no FibroFog server, so I can't see or recover
+    your data. See the <a href="privacy.html">privacy policy</a>.
+  </p>
+
+  <h2 style="font-size:1.05rem">Is there an Android version?</h2>
+  <p>
+    It's coming soon. On Android, FibroFog will read steps and sleep from Health
+    Connect and back up to a hidden, app-only folder in your own Google Drive.
+    iCloud and Google Drive don't talk to each other, so data won't sync
+    between an iPhone and an Android phone.
+  </p>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mitchell Isler</span>
+    <a href="index.html">Home</a>
+    <a href="privacy.html">Privacy</a>
+  </div>
+</footer>
+
+</body>
+</html>

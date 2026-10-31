@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FibroFog: a fibromyalgia tracker for your hardest days</title>
+  <meta name="description" content="FibroFog is a fibromyalgia tracker built for bad days: one-tap logging, voice memos, passive weather and health data, a body map with WPI/SSS scores, pattern detection, and a one-page report your doctor can read in a minute. Your data stays on your device.">
+  <meta property="og:title" content="FibroFog">
+  <meta property="og:description" content="Log a bad day in one tap. See what comes before your flares. Hand your doctor one page that tells the whole story. No FibroFog server; your data stays yours.">
+  <meta property="og:image" content="https://islerm.github.io/planthology-site/assets/img/fibrofog-today.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌫️</text></svg>">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* FibroFog accent: the app's soft purples over the shared stylesheet */
+    :root {
+      --green: #5b3fb0;
+      --green-dark: #3a1f86;
+      --gold: #f6c453;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --green: #b9a6f5;
+        --green-dark: #9d86ec;
+      }
+    }
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .stack span {
+      font-size: .85rem; padding: 4px 10px; border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--green) 35%, transparent);
+      color: var(--green);
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand-dropdown">
+      <button class="brand" onclick="this.parentElement.classList.toggle('open')">🌫️ FibroFog</button>
+      <div class="dropdown-menu">
+        <a href="../index.html">🌿 Planthology</a>
+        <a href="../snowball/index.html">❄️ Snowball Budget</a>
+        <a href="#top">🌫️ FibroFog</a>
+      </div>
+    </div>
+    <a class="link" href="#features">Features</a>
+    <a class="link" href="#screenshots">Screenshots</a>
+    <a class="link" href="#stack">Under the hood</a>
+    <a class="link keep" href="support.html">Support</a>
+    <a class="link keep" href="#feedback">Feedback</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1><span class="leaf">🌫️</span> Log a bad day in one tap.<br>See what comes before a flare.<br>Bring your doctor one page.</h1>
+      <p class="tag">
+        FibroFog is a fibromyalgia tracker built for the days when typing is too
+        much. Tap how bad it is, or just talk. Weather, sleep, and steps log
+        themselves. Over time it shows you your baseline, what tends to come
+        before a flare, and turns it all into a one-page summary your clinician
+        can read in about a minute.
+      </p>
+      <p class="disclaimer">
+        ⚠️ FibroFog is a tracking tool, not a medical device, and nothing in it
+        is a diagnosis or medical advice. Talk to your clinician before changing
+        any treatment.
+        <a href="support.html">Full disclaimer</a>
+      </p>
+      <div class="badge-row">
+        <!-- TODO: swap for the real App Store link once FibroFog is live, e.g.
+             <a class="btn primary" href="https://apps.apple.com/us/app/fibrofog/idXXXXXXXXXX">Get on the App&nbsp;Store</a> -->
+        <span class="btn primary" aria-disabled="true">Coming soon to the App&nbsp;Store</span>
+        <a class="btn ghost" href="#features">See what it does</a>
+      </div>
+      <p class="note">iPhone &amp; iPad · <strong>Android coming soon</strong> · no accounts, no FibroFog server, no ads or tracking</p>
+    </div>
+    <img class="phone" src="../assets/img/fibrofog-today.png" alt="FibroFog's Today screen with pain, WPI and SSS scores, medications, and automatically logged weather, sleep, and heart data">
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>Built for brain fog</h2>
+    <p class="lede">Minimum effort on bad days. Data a doctor can actually use.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🔋</div>
+        <h3>Low Energy Mode</h3>
+        <p>Three giant buttons: Rough, Meh, Okay. One tap and today is logged. Big "Talk" and "Meds taken" buttons sit right below. Large text, high contrast, and oversized tap targets throughout, because a bad day is exactly when you need the log most. Gentle daily reminders skip themselves once you've logged.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎙️</div>
+        <h3>Just talk</h3>
+        <p>Say "pain's about a seven, lower back and shoulders, really foggy today" and FibroFog fills in the log for you. The parser runs on your device and is careful by design: it fills what it's sure of and leaves the rest for you to confirm.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🌦️</div>
+        <h3>Logs itself</h3>
+        <p>Barometric pressure (and how much it changed since yesterday), humidity, and temperature are recorded automatically. Steps, sleep, workouts, resting heart rate, and HRV come from Apple Health. You don't lift a finger for any of it.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧍</div>
+        <h3>A body map that scores itself</h3>
+        <p>Tap or swipe across the front and back figure to paint where it hurts, in mild, moderate, or severe. Your Widespread Pain Index and Symptom Severity Score (ACR 2016 criteria) update live. A list mode works fully with VoiceOver.</p>
+      </div>
+      <div class="card">
+        <div class="icon">⛈️</div>
+        <h3>Flares and what came before</h3>
+        <p>FibroFog spots stretches well above your typical pain and looks back at what preceded them: very active days, long workouts, short sleep, pressure drops. The flare outlook reads the pressure forecast and your recent activity and gives you a heads-up when a big drop or an unusually busy week is coming.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔗</div>
+        <h3>Patterns, including delayed ones</h3>
+        <p>Fibro rarely punishes you the same day. The pattern engine checks for effects up to three days later, so "more sleep tends to mean less brain fog the next day" can actually surface. Always labeled as associations, never as proof of cause. Alongside it, your baseline shows what "normal" looks like for you and what's different on your good days.</p>
+      </div>
+      <div class="card">
+        <div class="icon">💊</div>
+        <h3>Medications with a history</h3>
+        <p>Track doses, check off what you've taken, and note changes and side effects as they happen. Past medications are kept, so your report shows what was tried and when.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📄</div>
+        <h3>One page for your doctor</h3>
+        <p>Pick 30 days, 90 days, or 6 months and get a single-page PDF: pain and symptom scores, medication adherence against pain, sleep and activity trends, flares, and the patterns FibroFog found. Print it or share it straight from the app.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔐</div>
+        <h3>Yours, and only yours</h3>
+        <p>There is no FibroFog server and no account. Your log lives on your device and backs up to your own private iCloud. Weather lookups send only a rough location, rounded to about 10 km. No ads, no analytics, no tracking.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="lede">Real screens from the app.</p>
+    <div class="shots">
+      <figure>
+        <img src="../assets/img/fibrofog-low-energy.png" alt="Low Energy Mode with large Rough, Meh, and Okay buttons plus Talk and Meds taken">
+        <figcaption>Low Energy Mode: today, logged in one tap.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-body-map.png" alt="Body map with front and back figures painted in mild, moderate, and severe pain areas">
+        <figcaption>Paint where it hurts; WPI and SSS score themselves.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-insights.png" alt="Insights screen with a 30-day pain chart and a personal baseline summary">
+        <figcaption>Your last 30 days and what "normal" looks like for you.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-flares-weather.png" alt="Flares summary listing common preceding factors, and a weather sensitivity comparison">
+        <figcaption>Flares, what came before them, and how weather hits you.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-patterns.png" alt="Patterns list linking sleep, heart rate variability, and resting heart rate to brain fog">
+        <figcaption>Patterns, including effects that show up days later.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-meds.png" alt="Medications list with doses, check-off circles, change notes, and past medications">
+        <figcaption>Medications, dose changes, and what you've tried.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-report-setup.png" alt="Doctor report screen with 30 day, 90 day, and 6 month options">
+        <figcaption>Pick a time period, tap once.</figcaption>
+      </figure>
+      <figure>
+        <img src="../assets/img/fibrofog-report-pdf.png" alt="One-page Fibromyalgia Symptom Summary PDF preview with charts and tables">
+        <figcaption>The one-page summary, ready to print or share.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <h2>Under the hood</h2>
+    <p class="lede">One codebase for iPhone today and Android soon.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">🛠️</div>
+        <h3>Tech stack</h3>
+        <p>Built with Flutter and Dart. Data lives in on-device SQLite; the scoring, correlation, flare, and baseline logic is pure, unit-tested Dart. Doctor reports are rendered as PDFs on the device.</p>
+        <div class="stack">
+          <span>Flutter</span><span>Dart</span><span>SQLite</span><span>HealthKit</span><span>Health Connect</span><span>iCloud Documents</span><span>Google Drive app data</span><span>Open-Meteo</span><span>On-device PDF</span>
+        </div>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Android is on the way</h3>
+        <p>FibroFog is coming to Android soon. It's the same app: steps and sleep from Health Connect, and backups to a private, hidden folder in your own Google Drive instead of iCloud. Sync works between your iPhones and iPads, or between your Android devices.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?labels=fibrofog,android&title=%5BFibroFog%5D%20Android%20interest">Tell me you want it</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="feedback">
+  <div class="wrap">
+    <h2>Feedback &amp; support</h2>
+    <p class="lede">Found a bug? Want a feature? I read everything.</p>
+    <div class="feedback-cards">
+      <div class="card">
+        <div class="icon">🐞</div>
+        <h3>Report a bug</h3>
+        <p>Something broken or behaving oddly in FibroFog? File it on GitHub; screenshots help a ton. Please leave out any health details you'd rather keep private.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?template=fibrofog_bug_report.md&labels=bug,fibrofog&title=%5BFibroFog%5D%5BBug%5D%20">Open a bug report</a></p>
+      </div>
+      <div class="card">
+        <div class="icon">💡</div>
+        <h3>Request a feature</h3>
+        <p>Tell me what would make FibroFog easier on your hardest days.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?template=fibrofog_feature_request.md&labels=enhancement,fibrofog&title=%5BFibroFog%5D%5BIdea%5D%20">Suggest a feature</a></p>
+      </div>
+      <div class="card">
+        <div class="icon">💬</div>
+        <h3>Something else</h3>
+        <p>Question, not sure it's a bug, or anything else on your mind; open a general issue and mention FibroFog.</p>
+        <p style="margin-top:14px"><a class="btn ghost" href="https://github.com/islerm/planthology-site/issues/new?labels=fibrofog&title=%5BFibroFog%5D%20">Start a discussion</a></p>
+      </div>
+    </div>
+    <p class="note">Support page: <a href="support.html">FibroFog support &amp; FAQ</a> · Privacy: <a href="privacy.html">privacy policy</a></p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lede">What I'm building. More on the way.</p>
+    <div class="grid">
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">🌿</div>
+          <div>
+            <h3 style="margin-top:0">Planthology</h3>
+            <p>An iOS planner that unifies everyday scheduling and trip planning, with drive-time intelligence, encrypted trip sharing, and shareable month recaps.</p>
+            <p style="margin-top:10px"><a href="../index.html">Learn more →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">❄️</div>
+          <div>
+            <h3 style="margin-top:0">Snowball Budget</h3>
+            <p>A calm monthly money planner: budget in the style that fits you; zero-based, 50/30/20, kakeibo, or envelopes; log expenses in two taps, grow a savings jar, and snowball your debt to a real debt-free date. No accounts, no servers; everything stays on your device.</p>
+            <p style="margin-top:10px"><a href="../snowball/index.html">Learn more →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">🌫️</div>
+          <div>
+            <h3 style="margin-top:0">FibroFog <span class="pill">This app</span></h3>
+            <p>A fibromyalgia tracker built for bad days: one-tap and voice logging, passive weather and health data, flare and pattern detection, and a one-page doctor report. Built in Flutter; Android coming soon.</p>
+            <p style="margin-top:10px"><a href="#top">Learn more ↑</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mitchell Isler</span>
+    <a href="privacy.html">Privacy</a>
+    <a href="support.html">Support</a>
+    <a href="../index.html">More apps</a>
+    <span class="spacer"></span>
+  </div>
+</footer>
+
+</body>
+</html>
