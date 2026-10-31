@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pit Crew Coach: an open-source telemetry coach for iRacing</title>
+  <meta name="description" content="Pit Crew Coach is an open-source practice coach for iRacing, written in Rust. It reads live telemetry or .ibt files and turns them into corner-by-corner comparisons, a grip circle, shift analysis, field comparisons, and spoken pit-radio feedback from a local language model.">
+  <meta property="og:title" content="Pit Crew Coach">
+  <meta property="og:description" content="An open-source iRacing coach in Rust: live telemetry, corner-by-corner analysis, and a local AI race engineer on the radio.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🏁</text></svg>">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <style>
+    /* Pit Crew Coach accent: racing red over the shared stylesheet */
+    :root {
+      --green: #c8321e;
+      --green-dark: #9a2414;
+      --gold: #f2a33a;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --green: #ff7a5c;
+        --green-dark: #f05a3a;
+      }
+    }
+    .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .stack span {
+      font-size: .85rem; padding: 4px 10px; border-radius: 999px;
+      border: 1px solid color-mix(in srgb, var(--green) 35%, transparent);
+      color: var(--green);
+    }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-top: 8px; }
+    .stats .card { text-align: center; }
+    .stats strong { display: block; font-size: 1.8rem; color: var(--green); line-height: 1.1; }
+    .stats span { font-size: .9rem; opacity: .8; }
+    .hero .wide {
+      width: 100%; max-width: 560px; border-radius: 14px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.18); border: 1px solid rgba(127,127,127,.2);
+    }
+    @media (min-width: 801px) { .hero .wrap { grid-template-columns: 1fr 1fr; } }
+    .wide-shots figure { flex: 1 1 420px; max-width: 540px; }
+    .wide-shots img { border-radius: 12px; display: block; }
+    .wide-shots a { display: block; }
+    pre.cmd {
+      background: color-mix(in srgb, var(--green) 7%, transparent);
+      border: 1px solid color-mix(in srgb, var(--green) 20%, transparent);
+      border-radius: 10px; padding: 14px 16px; overflow-x: auto; font-size: .9rem;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand-dropdown">
+      <button class="brand" onclick="this.parentElement.classList.toggle('open')">🏁 Pit Crew Coach</button>
+      <div class="dropdown-menu">
+        <a href="../index.html">🌿 Planthology</a>
+        <a href="../snowball/index.html">❄️ Snowball Budget</a>
+        <a href="../fibrofog/index.html">🌫️ FibroFog</a>
+        <a href="#top">🏁 Pit Crew Coach</a>
+      </div>
+    </div>
+    <a class="link" href="#features">Features</a>
+    <a class="link" href="#screenshots">Screenshots</a>
+    <a class="link keep" href="#engineering">Engineering</a>
+    <a class="link" href="#run">Run it</a>
+    <a class="link keep" href="https://github.com/islerm/iracing-pitcrew-coach">GitHub</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1><span class="leaf">🏁</span> Your laps, read like a race engineer would.</h1>
+      <p class="tag">
+        Pit Crew Coach is an open-source practice coach for iRacing. It records
+        a stint straight from the sim, or opens a telemetry file, and shows you
+        exactly where the time goes: corner by corner, against your best lap,
+        your typical lap, or the quickest cars in the session. Then a race
+        engineer, powered by a language model running on your own PC, tells you
+        about it over the radio.
+      </p>
+      <div class="badge-row">
+        <a class="btn primary" href="https://github.com/islerm/iracing-pitcrew-coach">View on GitHub</a>
+        <a class="btn ghost" href="#engineering">How it's built</a>
+      </div>
+      <p class="note">Open source · Rust · runs locally on Windows, macOS, and Linux (live recording on Windows)</p>
+    </div>
+    <a href="../assets/img/pitcrew-overview.png"><img class="wide" src="../assets/img/pitcrew-overview.png" alt="Pit Crew Coach run overview for Watkins Glen: best lap, optimal lap, consistency, trend, focus sector, and a pace chart"></a>
+  </div>
+</header>
+
+<section id="features">
+  <div class="wrap">
+    <h2>What it does</h2>
+    <p class="lede">Telemetry tools show you graphs. Pit Crew Coach tells you which corner to fix and how.</p>
+    <div class="grid">
+      <div class="card">
+        <div class="icon">⏱️</div>
+        <h3>Laps and sectors at a glance</h3>
+        <p>Best lap, optimal lap from your best sectors, consistency, trend across the stint, and the one sector where a typical lap loses the most. Laps that went off track or picked up incidents are flagged automatically.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🗺️</div>
+        <h3>A track map that explains itself</h3>
+        <p>The map is colored by time gained and lost, speed, or pedal inputs, with every turn numbered. Hover anywhere to see where the comparison lap was at the same moment. Traces for speed, throttle, brake, gear, and steering stay synced to the cursor.</p>
+      </div>
+      <div class="card">
+        <div class="icon">↪️</div>
+        <h3>Corner by corner</h3>
+        <p>Click a turn for an entry and exit breakdown: brake point, minimum speed, which gear was quicker, grip used, ABS, and understeer or oversteer. Elevation-aware notes catch downhill braking zones, crests, and compressions.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🎯</div>
+        <h3>Grip circle and shift analysis</h3>
+        <p>A g-g plot shows how much of the tyres' grip each lap and corner used, with a built-in guide to reading it. Upshifts are checked against the car's shift light and redline, including time spent on the limiter.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🏎️</div>
+        <h3>Compare against the field</h3>
+        <p>During a live session it rebuilds the laps of every other car from iRacing's per-car data and compares you against the quickest drivers in your class: where they start braking, carry more apex speed, or get on the power earlier.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📻</div>
+        <h3>A race engineer on the radio</h3>
+        <p>After every lap, a short call names the corner that cost the most, why, and what to try next time. Pull into the pits and you get a fuller stint debrief. It's spoken in a natural voice with a radio effect, and kept light on numbers so you can take it in at speed.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧠</div>
+        <h3>Ask the coach</h3>
+        <p>Ask about any corner for written feedback grounded in your actual telemetry, or read the "next time out" list: the handful of changes most likely to find time on your next run. Other drivers' laps are saved per track and car class, so the field library grows every session.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🔒</div>
+        <h3>Fully local</h3>
+        <p>The analysis, the language model, and the voice all run on your own machine. No account, no cloud service, and no telemetry ever leaves your PC.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="screenshots">
+  <div class="wrap">
+    <h2>See it in action</h2>
+    <p class="lede">Real screens from the app, using an anonymized test session from the repo. Click any screen for full size.</p>
+    <div class="shots wide-shots">
+      <figure>
+        <a href="../assets/img/pitcrew-track.png"><img src="../assets/img/pitcrew-track.png" alt="Track map colored by time gained and lost, next to synced delta, speed, throttle, brake, and gear traces" loading="lazy"></a>
+        <figcaption>The track map and traces, linked: hover one and the others follow.</figcaption>
+      </figure>
+      <figure>
+        <a href="../assets/img/pitcrew-corner.png"><img src="../assets/img/pitcrew-corner.png" alt="Turn 6 breakdown comparing entry and exit against another lap" loading="lazy"></a>
+        <figcaption>Click a turn for an entry and exit breakdown against another lap.</figcaption>
+      </figure>
+      <figure>
+        <a href="../assets/img/pitcrew-corners.png"><img src="../assets/img/pitcrew-corners.png" alt="Corner by corner table with time delta, minimum speed, brake point, gear, grip use, and balance for each turn" loading="lazy"></a>
+        <figcaption>Every corner at a glance: time, apex speed, brake point, gear, grip, balance.</figcaption>
+      </figure>
+      <figure>
+        <a href="../assets/img/pitcrew-shifts.png"><img src="../assets/img/pitcrew-shifts.png" alt="Gears and shifts analysis showing early upshifts per gear and each upshift on the lap" loading="lazy"></a>
+        <figcaption>Shift analysis: which upshifts are early, late, or on time.</figcaption>
+      </figure>
+      <figure>
+        <a href="../assets/img/pitcrew-coach.png"><img src="../assets/img/pitcrew-coach.png" alt="Next time out suggestions and written coach feedback from a local Llama model" loading="lazy"></a>
+        <figcaption>Suggestions for the next run, plus written feedback from a local model.</figcaption>
+      </figure>
+      <figure>
+        <a href="../assets/img/pitcrew-radio.png"><img src="../assets/img/pitcrew-radio.png" alt="Radio transcript with a short engineer call after each lap" loading="lazy"></a>
+        <figcaption>The radio log: one short, spoken call per lap.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section id="engineering">
+  <div class="wrap">
+    <h2>How it's built</h2>
+    <p class="lede">A personal project I use to sharpen systems programming, data analysis, and applied AI. Some of the interesting problems along the way:</p>
+    <div class="stats">
+      <div class="card"><strong>~10k</strong><span>lines of Rust</span></div>
+      <div class="card"><strong>~4k</strong><span>lines of UI JavaScript</span></div>
+      <div class="card"><strong>3</strong><span>platforms: Windows, macOS, Linux</span></div>
+      <div class="card"><strong>0</strong><span>cloud services</span></div>
+    </div>
+    <div class="grid" style="margin-top:24px">
+      <div class="card">
+        <div class="icon">📦</div>
+        <h3>A binary file reader from scratch</h3>
+        <p>iRacing's <code>.ibt</code> telemetry format is read by a small reader I wrote, which pulls only the channels and session fields the app needs, so unusual metadata layouts don't break an import. On Windows, live data comes straight from the sim's shared memory.</p>
+      </div>
+      <div class="card">
+        <div class="icon">📐</div>
+        <h3>Signal processing on real data</h3>
+        <p>Live telemetry has no GPS, so track maps are rebuilt from heading and lap distance; on real data they agree with GPS to within about 5 to 7 m. Corners are detected from curvature, and other cars' speed is derived from how their lap distance changes over time, smoothed and resampled onto a shared distance grid so the comparison is like for like.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🤖</div>
+        <h3>Grounded, local AI</h3>
+        <p>The coach prompts a local model through Ollama with structured findings (corner metrics, history, conditions) rather than raw data, so feedback stays specific and checkable. Text-to-speech runs through Piper or Kokoro in small Python sidecars, with a radio effect applied in Rust.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🛡️</div>
+        <h3>Privacy-aware test data</h3>
+        <p>Real telemetry files contain names, IDs, and car setups, so they're never committed. A built-in exporter produces anonymized fixtures that drop identifying fields entirely, and the test suite checks committed fixtures for anything identifying.</p>
+      </div>
+      <div class="card">
+        <div class="icon">🧱</div>
+        <h3>Simple, portable architecture</h3>
+        <p>An async Rust server (axum on tokio) serves a local HTTP API and a React UI with no build step. Other drivers and their laps are stored in SQLite with versioned schema migrations. Everything except live capture builds and runs on macOS and Linux, and a replay mode streams a recorded file as if it were live.</p>
+        <div class="stack">
+          <span>Rust</span><span>Tokio</span><span>Axum</span><span>SQLite</span><span>React</span><span>Custom charts</span><span>Ollama</span><span>Piper</span><span>Kokoro</span><span>Python</span><span>uv</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="alt" id="run">
+  <div class="wrap">
+    <h2>Run it yourself</h2>
+    <p class="lede">You'll need a Rust toolchain. Ollama and a voice model are optional extras.</p>
+    <pre class="cmd"><code>git clone https://github.com/islerm/iracing-pitcrew-coach.git
+cd iracing-pitcrew-coach
+cargo run --release
+# then open http://127.0.0.1:8787
+
+# no iRacing? replay a bundled session as if it were live
+cargo run --release -- --replay tests/fixtures/roadatlanta-full.ibt --replay-speed 8</code></pre>
+    <p class="note">Full setup, options, and project layout are in the <a href="https://github.com/islerm/iracing-pitcrew-coach#readme">README</a>. Found a bug or have an idea? <a href="https://github.com/islerm/iracing-pitcrew-coach/issues">Open an issue on the repo</a>.</p>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <h2>Projects</h2>
+    <p class="lede">What I'm building. More on the way.</p>
+    <div class="grid">
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">🌿</div>
+          <div>
+            <h3 style="margin-top:0">Planthology</h3>
+            <p>An iOS planner that unifies everyday scheduling and trip planning, with drive-time intelligence, encrypted trip sharing, and shareable month recaps.</p>
+            <p style="margin-top:10px"><a href="../index.html">Learn more →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">❄️</div>
+          <div>
+            <h3 style="margin-top:0">Snowball Budget</h3>
+            <p>A calm monthly money planner: budget in the style that fits you; zero-based, 50/30/20, kakeibo, or envelopes; log expenses in two taps, grow a savings jar, and snowball your debt to a real debt-free date. No accounts, no servers; everything stays on your device.</p>
+            <p style="margin-top:10px"><a href="../snowball/index.html">Learn more →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">🌫️</div>
+          <div>
+            <h3 style="margin-top:0">FibroFog</h3>
+            <p>A fibromyalgia tracker built for bad days: one-tap and voice logging, passive weather and health data, flare and pattern detection, and a one-page doctor report. Built in Flutter; Android coming soon.</p>
+            <p style="margin-top:10px"><a href="../fibrofog/index.html">Learn more →</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="card project-card">
+        <div class="project">
+          <div class="emoji">🏁</div>
+          <div>
+            <h3 style="margin-top:0">Pit Crew Coach <span class="pill">This project</span></h3>
+            <p>An open-source iRacing coach in Rust: live telemetry, corner-by-corner analysis, field comparisons, and a local AI race engineer on the radio.</p>
+            <p style="margin-top:10px"><a href="#top">Learn more ↑</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Mitchell Isler</span>
+    <a href="https://github.com/islerm/iracing-pitcrew-coach">GitHub</a>
+    <a href="../index.html">More apps</a>
+    <span class="spacer"></span>
+  </div>
+</footer>
+
+</body>
+</html>

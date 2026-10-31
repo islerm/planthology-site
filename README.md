@@ -8,6 +8,7 @@ an iOS planner that unifies everyday scheduling and trip planning.
 - `support.html`: support & FAQ (App Store "support URL")
 - `snowball/`: Snowball Budget landing, privacy, and support pages
 - `fibrofog/`: FibroFog landing, privacy, and support pages (Flutter app; iOS now, Android coming soon)
+- `pitcrew/`: Pit Crew Coach portfolio page (open-source iRacing coach in Rust; feedback goes to its own repo)
 - `.github/ISSUE_TEMPLATE/`: bug report & feature request templates; Issues on
   this repo are the app's public feedback channel
 
